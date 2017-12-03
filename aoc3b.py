@@ -1,10 +1,8 @@
 from sys import exit
 
 grid = {(0, 0): 1}
-x_diff = 0
-y_diff = 0
+x_diff, y_diff = 0, 0
 step = 0
-target = 265149
 
 def surrounding_cells_array(coordinates):
     x, y = coordinates
@@ -13,7 +11,7 @@ def surrounding_cells_array(coordinates):
 def determine_coordinate_value(coordinates):
     grid[coordinates] = sum(grid[x] for x in
           surrounding_cells_array(coordinates) if x in grid)
-    if grid[coordinates] > target:
+    if grid[coordinates] > 265149:
         print(grid[coordinates])
         exit()
 
