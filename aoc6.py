@@ -1,6 +1,6 @@
 with open('aoc6.txt') as f:
     for line in f:
-        layout = [int(x) for x in line.split(' ')]
+        layout = [int(x) for x in line.split('\t')]
 
 
 previous_positions = {}
