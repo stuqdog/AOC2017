@@ -23,8 +23,8 @@ while direct_connections:
         del connected_to_root[0]
     for y in solution:
         del direct_connections[y]
-    groups += 1
-    if groups == 1:
+    total_groups += 1
+    if total_groups == 1:
         print("Part one: {}".format(len(solution)))
 
-print("Part two: {}".format(groups))
+print("Part two: {}".format(total_groups))
