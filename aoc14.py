@@ -3,7 +3,7 @@ solution = 0
 grid = []
 
 for x in range(128):
-    new = [ord(c) for c in ('flqrgnkx-' + str(x))] + [17,31,73,47,23]
+    new = [ord(c) for c in ('oundnydw-' + str(x))] + [17,31,73,47,23]
     instructions.append(new)
 
 for row in range(128):
