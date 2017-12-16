@@ -3,6 +3,7 @@ instr = "s11,x10/2,s5,x1/3,pl/d,x2/5,s9,x9/14,pa/i,x10/2,s12,x6/4,pk/m,x1/10,pb/
 def dance_cycle(length):
     puzzle = [c for c in 'abcdefghijklmnop']
     static = puzzle[:]
+    previous = {}
 
     for x in range(length):
         for line in instr:
@@ -17,9 +18,9 @@ def dance_cycle(length):
                 puzzle[a], puzzle[b] = puzzle[b], puzzle[a]
 
         if puzzle == static:
-            return x + 1
+            return previous[length % (x + 1)]
+        previous[x + 1] = ''.join(puzzle)
     return ''.join(puzzle)
 
 print("Part one: {}".format(dance_cycle(1)))
-loop_size = dance_cycle(1000000000)
-print("Part two: {}".format(dance_cycle(1000000000 % loop_size)))
+print("Part two: {}".format(dance_cycle(1000000000)))
