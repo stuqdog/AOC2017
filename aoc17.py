@@ -4,7 +4,7 @@ p_two = 0
 
 for x in range(1, 2018):
     current = (current + 356) % x + 1
-    puzzle = puzzle[:(current)] + [x] + puzzle[(current):]
+    puzzle.insert(current, x)
 
 solution = puzzle.index(2017) + 1
 print("Part one: {}".format(puzzle[solution]))
