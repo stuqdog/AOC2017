@@ -23,31 +23,31 @@ while True:
         elif puzzle[y][x+1] != ' ':
             x += 1
             direction = 'right'
-        elif x > 0 and puzzle[y][x-1] != ' ':
+        elif puzzle[y][x-1] != ' ':
             x -= 1
             direction = 'left'
         else:
             break
 
     elif direction == 'left':
-        if  x > 0 and puzzle[y][x-1] != ' ':
+        if puzzle[y][x-1] != ' ':
             x -= 1
         elif puzzle[y+1][x] != ' ':
             y += 1
             direction = 'down'
-        elif y > 0 and puzzle[y-1][x] != ' ':
+        elif puzzle[y-1][x] != ' ':
             y -= 1
             direction = 'up'
         else:
             break
 
     elif direction == 'up':
-        if y > 0 and puzzle[y-1][x] != ' ':
+        if puzzle[y-1][x] != ' ':
             y -= 1
         elif puzzle[y][x+1] != ' ':
             x += 1
             direction = 'right'
-        elif x > 0 and puzzle[y][x-1] != ' ':
+        elif puzzle[y][x-1] != ' ':
             x -= 1
             direction = 'left'
         else:
@@ -59,7 +59,7 @@ while True:
         elif puzzle[y+1][x] != ' ':
             y += 1
             direction = 'down'
-        elif y > 0 and puzzle[y-1][x] != ' ':
+        elif puzzle[y-1][x] != ' ':
             y -= 1
             direction = 'up'
         else:
