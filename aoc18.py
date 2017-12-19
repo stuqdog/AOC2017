@@ -14,23 +14,17 @@ class Register():
         self.regs['p'] = p
         self.queue = []
         self.is_one = p
-        self.end = False
 
     def follow_instruction(self, receiver):
 
         if self.x not in range(Register.length):
-            self.end = True
-            return
+            return True
 
         line = Register.instr[self.x].split()
 
         if line[0] == 'snd':
-            # if line[1].isalpha():
             receiver.queue.append(self.regs[line[1]])
-            # else:
-            #     receiver.queue.append(int(line[1]))
-            if receiver.x in range(Register.length):
-                receiver.end = False
+
             if self.is_one:
                 self.is_one += 1
 
@@ -51,7 +45,8 @@ class Register():
                 self.regs[line[1]] = self.queue[0]
                 del self.queue[0]
             else:
-                self.end = True
+                return True
+
         elif line[0] == "jgz":
             if line[1].isalpha():
                 if self.regs[line[1]] > 0:
@@ -63,6 +58,7 @@ class Register():
         else:
             print("Ruh roh: {}".format(self.x))
         self.x += 1
+        return False
 
 
 def part_one(instr):
@@ -104,14 +100,8 @@ print("Part one: {}".format(part_one(instr)))
 regs_one = Register(0)
 regs_two = Register(1)
 
-while regs_one.end == False or regs_two.end == False:
-    if regs_one.end == False:
-        regs_one.follow_instruction(regs_two)
-    if regs_two.end == False:
-        regs_two.follow_instruction(regs_one)
-
-
-    # if regs_one.end == True == regs_two.end:
-    #     break
+while True:
+    if regs_one.follow_instruction(regs_two) and regs_two.follow_instruction(regs_one):
+        break
 
 print("Part two: {}".format(regs_two.is_one - 1))
