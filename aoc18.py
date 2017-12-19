@@ -24,7 +24,6 @@ class Register():
 
         if line[0] == 'snd':
             receiver.queue.append(self.regs[line[1]])
-
             if self.is_one:
                 self.is_one += 1
 
@@ -55,8 +54,6 @@ class Register():
             elif int(line[1]) > 0:
                 self.x += self.regs[line[2]] if line[2].isalpha() else int(line[2])
                 self.x -= 1
-        else:
-            print("Ruh roh: {}".format(self.x))
         self.x += 1
         return False
 
