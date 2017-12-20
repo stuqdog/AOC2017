@@ -1,7 +1,7 @@
 from collections import Counter
 
 with open('aoc9.txt') as f:
-    puzzle = str(line for line in f)
+    puzzle = str([line for line in f][0])
 
 end = len(puzzle)
 i = 0
